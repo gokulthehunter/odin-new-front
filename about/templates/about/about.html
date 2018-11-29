@@ -20,7 +20,7 @@
 
 <body>
     <!-- navigation -->
-    <nav class="main_nav nav-active">
+    <nav class="main_nav">
         <div class="main_nav_holder">
             <div class="container">
                 <div class="row align-items-center">
@@ -52,9 +52,9 @@
         <!-- banner[start] -->
         <section>
             <div class="main_banner small">
-                <div class="container h-100">
+                <div class="container h-100 max-960">
                     <div class="row align-items-center h-100">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-10 col-12">
                             <div class="main_banner_content">
                                 <h1 class="main_banner_content--head">Practical guide to Deep Learning in 6 months</h1>
                             </div>
@@ -70,7 +70,7 @@
         <!-- adddon content section[start] -->
         <section>
             <div class="content_area_articles pt-2 pb-5">
-                <div class="container">
+                <div class="container max-960">
                     <!-- 1 -->
                     <div class="each_articles">
                         <div class="row align-items-center">
@@ -133,6 +133,7 @@
     <script src="{% static 'js/c-render.js' %}"></script>
     <script>
         jQuery(document).ready(function ($) {
+            // navigation action[start]
             $(window).on("load scroll", function () {
                 if ($(window).scrollTop() > 0) {
                     $(".main_nav").addClass("nav-active");
@@ -146,6 +147,14 @@
                     //$(".main_nav_holder--img img").attr("src", upImg);
                 }
             });
+            // navigation action[end]
+            // mobile btn[start]
+            $(".ham-btn").on("click", function () {
+                $(".main_nav_holder_links").toggleClass("mob-active");
+                $(this).toggleClass("active");
+                $(this).find("i").toggleClass("fa-times");
+            });
+            // mobile btn[end]
         }(jQuery));
         particlesJS("particles-js", {
             "particles": {

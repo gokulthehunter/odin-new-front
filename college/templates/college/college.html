@@ -4,12 +4,13 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <title>odinAI</title>
-
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>OdinAI</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" />
+
     <!-- STYLESHEETS -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -18,11 +19,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/compiled/style.min.css' %}" />
 
     <style>
-    
         /* BLOG POSTS FROM DJANGO */
-  
-
-  .postTitle {
+  /* .postTitle {
     padding-top: 0em; 
     font-size: 5.5vmin;
     font-weight: 500;
@@ -44,11 +42,11 @@
   .postDate {
     padding-top: 0.7em; 
     font-size: 4vmin;
-  }
+  } */
   
   /* FOR XL */
   
-  .blogPage .bp1xl {
+  /* .blogPage .bp1xl {
     height: 20%;
     font-family: 'Ubuntu', sans-serif;
     font-size: 4vmin;
@@ -94,7 +92,7 @@
     font-size: 2vmin;
     font-weight: 100;
     font-style: italic;
-  }
+  } */
     </style>
 
 
@@ -102,7 +100,7 @@
 
 <body>
     <!-- navigation -->
-    <nav class="main_nav nav-active">
+    <nav class="main_nav">
         <div class="main_nav_holder">
             <div class="container">
                 <div class="row align-items-center">
@@ -134,13 +132,12 @@
         <!-- banner[start] -->
         <section>
             <div class="main_banner small">
-                <div class="container h-100">
+                <div class="container h-100 max-960">
                     <div class="row align-items-center h-100">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-10 col-12">
                             <div class="main_banner_content">
                                 <h1 class="main_banner_content--head">Deep Learning College Guides</h1>
-                                <h5 class="main_banner_content--desc" style="font-size: 2.25vmin;">Content created by college graduates and seniors - courses to take, clubs to join, professors to work under and
-                                        more.</h5>
+                                <h5 class="main_banner_content--desc" >Content created by college graduates and seniors - courses to take, clubs to join, professors to work under and more.</h5>
                             </div>
                         </div>
                     </div>
@@ -155,56 +152,30 @@
         <section>
             <div class="content_area_articles pt-2 pb-5">
                 <div class="container max-960">
-
-
-                        <div class="blogPostsContainer d-block d-sm-none d-none d-sm-block d-md-none d-none d-md-block d-lg-none">
-                                <div class="container blogPage">
-                            
-                                  {% for post in CPosts %}
-                            
-                                  <div class="row rowWrapper"> 
-                                      <div class="col"></div>
-                                      <div class="col-10">
-                                          <div class="postTitle"><a href="{% url 'postDetail' pk=post.pk %}">{{post.cposttitle}}</a></div>
-                                          <div class="postImage"><img src="/media/{{post.cimage}}" id="postImageID"/></div>
-                                          <div class="postDescription">{{post.cpostsummary}}</div>
-                                          <div class="postDate">{{post.ccreated_at|date:"d M Y"}}</div>
-                                      </div>
-                                     <div class="col"></div>
-                                  </div> 
-                                  <hr/> 
-                                  {% endfor %}
-                            
-                                </div>
-                              </div>
-
-
-
-
-                              <div class="blogPostsContainer d-none d-lg-block d-xl-none d-none d-xl-block">
-                                    <div class="container blogPage">
-                                
-                                      {% for post in CPosts %}
-                                
-                                      <div class="row container rowWrapperXL"> 
-                                          <div class="col-8">
-                                              <div class="postTitlexl"><a href="{% url 'cpostDetail' pk=post.pk %}">{{post.cposttitle}}</a></div>
-                                              <div class="postDescriptionxl">{{post.cpostsummary}}</div>
-                                              <div class="postDatexl">{{post.ccreated_at|date:"d M Y"}}</div>
-                                          </div>
-                                          <div class="col-1"></div>
-                                          <div class="col-3">
-                                              <div class="postImagexl"><img src="/media/{{post.cimage}}" id="postImageID"/></div>
-                                          </div>
-                                          
-                                      </div> 
-                                      <hr/> 
-                                      {% endfor %}
-                                
+                    <!-- <div class="blogPostsContainer"> -->
+                        <!-- <div class="blogPage"> -->
+                            {% for post in CPosts %}
+                            <div class="each_articles">
+                                <div class="row"> 
+                                    <div class="col-md-9 col-12">
+                                        <div class="content_area_articles_copy">
+                                            <h3 class=""><a href="{% url 'cpostDetail' pk=post.pk %}">{{post.cposttitle}}</a></h3>
+                                            <p class="">{{post.cpostsummary}}</p>
+                                            <p class="text-secondary pt-2">{{post.ccreated_at|date:"d M Y"}}</p>
+                                        </div>
                                     </div>
-                                </div>
-
-
+                                    <div class="col-md-3 col-12">
+                                        <div class="content_area_articles_img">
+                                            <!-- <div class="postImagexl"> -->
+                                                <img src="/media/{{post.cimage}}" id="postImageID" class="img-fluid" alt="image"/>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            {% endfor %}
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </section>
@@ -247,7 +218,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/c-render.js' %}"></script>
     <script>
-        jQuery(document).ready(function($){
+        jQuery(document).ready(function ($) {
+            // navigation action[start]
             $(window).on("load scroll", function () {
                 if ($(window).scrollTop() > 0) {
                     $(".main_nav").addClass("nav-active");
@@ -261,7 +233,16 @@
                     //$(".main_nav_holder--img img").attr("src", upImg);
                 }
             });
+            // navigation action[end]
+            // mobile btn[start]
+            $(".ham-btn").on("click", function () {
+                $(".main_nav_holder_links").toggleClass("mob-active");
+                $(this).toggleClass("active");
+                $(this).find("i").toggleClass("fa-times");
+            });
+            // mobile btn[end]
         }(jQuery));
+        if($(window).width() > 767){
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -333,6 +314,7 @@
             },
             "retina_detect": true
         });
+        }
     </script>
 
 </body>
